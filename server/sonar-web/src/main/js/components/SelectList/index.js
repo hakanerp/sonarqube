@@ -19,6 +19,7 @@
  */
 import $ from 'jquery';
 import _ from 'underscore';
+import escapeHtml from 'escape-html';
 import Backbone from 'backbone';
 import { translate } from '../../helpers/l10n';
 import ItemTemplate from './templates/item.hbs';
@@ -414,8 +415,8 @@ window.SelectList.defaults = {
   readOnly: false,
   focusSearch: true,
 
-  format (item) {
-    return item.value;
+  dangerouslyUnescapedHtmlFormat (item) {
+    return escapeHtml(item.value);
   },
 
   parse (r) {
