@@ -303,7 +303,9 @@ export default class ComponentNavMenu extends React.PureComponent {
   }
 
   renderExtension = ({ key, name }, isAdmin = false) => {
-    const pathname = isAdmin ? `/project/admin/extension/${key}` : `/project/extension/${key}`;
+    const pathname = isAdmin === true
+      ? `/project/admin/extension/${key}`
+      : `/project/extension/${key}`;
     return (
       <li key={key}>
         <Link to={{ pathname, query: { id: this.props.component.key } }} activeClassName="active">
