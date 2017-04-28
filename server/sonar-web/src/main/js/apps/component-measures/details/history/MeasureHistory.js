@@ -110,9 +110,10 @@ export default class MeasureHistory extends React.PureComponent {
     }
 
     const data = snapshots.map(snapshot => {
+      const valueAsNumber = Number(snapshot.value);
       return {
         x: snapshot.date,
-        y: Number(snapshot.value)
+        y: isNaN(valueAsNumber) ? snapshot.value : valueAsNumber
       };
     });
 
